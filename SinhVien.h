@@ -3,18 +3,19 @@
 #include <iostream>
 #include <cstring>
 #include <string.h>
+#include <stdlib.h> // Prevent segmentation fault
 
 using namespace std;
 
 class SinhVien {
     private:
-        char* hoTen;
-        char* ngaySinh;
-        double* marks;
+        char* hoTen = new char[50];
+        char* ngaySinh = new char[20];
+        double* marks = new double[5];
 
     public:
         SinhVien(); // Tao
-        SinhVien(char* hoTen, char* ngaySinh, double marks[3]);
+        SinhVien(char* const hoTen, char* const ngaySinh, double marks[3]);
         SinhVien(SinhVien const &sinhvien); // Sao chep
         ~SinhVien(); // Huy
 

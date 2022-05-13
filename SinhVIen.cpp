@@ -1,12 +1,10 @@
 #include "SinhVien.h"
 
 SinhVien::SinhVien() {
-    hoTen = new char[50];
-    ngaySinh = new char[20];
-    marks = new double[5];
+    
 };
 
-SinhVien::SinhVien(char* hoTen, char* ngaySinh, double marks[3]) {
+SinhVien::SinhVien(char* const hoTen, char* const ngaySinh, double* marks) {
     strcpy(this->hoTen, hoTen);
     strcpy(this->ngaySinh, ngaySinh);
     for (int i = 0; i < 3; ++i) {
