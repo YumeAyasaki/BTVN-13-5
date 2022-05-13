@@ -26,5 +26,8 @@ class SinhVien {
         double* getMarks();
         void setMarks(double* marks);
 
+        double getStdAvg();
+        char* getHocLuc();
+
         SinhVien operator=(SinhVien const &sinhvien); // Gan bang
 };

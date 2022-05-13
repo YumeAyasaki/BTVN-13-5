@@ -6,6 +6,7 @@ int main() {
     marks[1] = 8;
     marks[2] = 9;
     SinhVien temp((char*)"Ayasaki Yume", (char*)"19/11/2001", marks);
-    cout << temp.getHoTen();
+    cout << temp.getHoTen() << '\n';
+    cout << temp.getHocLuc();
     return 0;
 }

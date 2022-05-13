@@ -50,3 +50,24 @@ double* SinhVien::getMarks() {
 void SinhVien::setMarks(double* marks) {
     this->marks = marks;
 }
+
+double SinhVien::getStdAvg() {
+    return marks[0] * 0.25 + marks[1] * 0.25 + marks[2] * 0.5;
+}
+
+char* SinhVien::getHocLuc() {
+    double avg = getStdAvg();
+    if (avg >= 8.0) {
+        return (char*)"Gioi";
+    }
+    else if (avg >= 6.5) {
+        return (char*)"Kha";
+    }
+    else if (avg >= 5.0) {
+        return (char*)"Trung binh";
+    }
+    else if (avg >= 3.6) {
+        return (char*)"Yeu";
+    }
+    return (char*)"Kem";
+}
