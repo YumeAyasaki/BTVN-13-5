@@ -10,6 +10,7 @@ public:
     SinhVien(/* args */);
     ~SinhVien();
     int QLSinhvien();
+    int N_QLSinhVien();
 };
 
 SinhVien::SinhVien(/* args */)
