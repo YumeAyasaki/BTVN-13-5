@@ -86,3 +86,34 @@ void QLSinhVien::input()
     }
     cout << "\n";
 }
+
+double QLSinhVien::getClsAvg()
+{
+    double sum = 0;
+    Node* pointer = danhsach.head;
+    int count = 0;
+    while (pointer)
+    {
+        sum += pointer->detail.getStdAvg();
+        ++count;
+        pointer = pointer->next;
+    }
+    return sum/count;
+}
+
+List QLSinhVien::getStdbelowClsAvg()
+{
+    double clsAve = this->getClsAvg();
+    List DuoiTB;
+    initList(DuoiTB);    
+    Node* temp = danhsach.head;
+    while (temp)
+    {
+        if (temp->detail.getStdAvg() < clsAve)
+        {
+            insertTail(danhsach, temp->detail);
+        }
+        temp = temp->next;
+    }
+    return DuoiTB;
+}

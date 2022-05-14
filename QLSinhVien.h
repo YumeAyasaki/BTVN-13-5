@@ -24,5 +24,5 @@ public:
     void inputFromFile();
     void outputToFile();
     double getClsAvg();
-    void getStdbelowClsAvg();
+    List getStdbelowClsAvg();
 };
