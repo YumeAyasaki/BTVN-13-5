@@ -1,16 +1,28 @@
 #include "SinhVien.h"
 #pragma once
 
+struct Node
+{
+    SinhVien detail;
+    Node* next;
+};
+
+struct List
+{
+    Node* head;
+    Node* tail;
+};
+
 class QLSinhVien : public SinhVien
 {
 private:
-    int size;
-    SinhVien** Danhsach;
+    List danhsach;
 public:
     QLSinhVien();
     ~QLSinhVien();
     void input();
     void inputFromFile();
     void outputToFile();
+    double getClsAvg();
+    void getStdbelowClsAvg();
 };
-
