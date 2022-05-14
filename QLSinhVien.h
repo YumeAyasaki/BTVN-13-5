@@ -24,14 +24,9 @@ public:
     QLSinhVien();
     ~QLSinhVien();
     void input();
-<<<<<<< HEAD
-    // void inputFromFile(string fileName);
-    // void outputToFile(string fileName);
-=======
     void output();
     void inputFromFile(string fileName);
     void outputToFile(string fileName);
->>>>>>> origin/DuyQuang
     double getClsAvg();
     List getStdbelowClsAvg();
 
