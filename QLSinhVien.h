@@ -1,5 +1,8 @@
-#include "SinhVien.h"
 #pragma once
+
+#include <fstream>
+#include "SinhVien.h"
+#include <iomanip>
 
 struct Node
 {
@@ -13,7 +16,7 @@ struct List
     Node* tail;
 };
 
-class QLSinhVien : public SinhVien
+class QLSinhVien
 {
 private:
     List danhsach;
@@ -21,8 +24,9 @@ public:
     QLSinhVien();
     ~QLSinhVien();
     void input();
-    void inputFromFile();
-    void outputToFile();
+    void inputFromFile(string fileName);
+    void outputToFile(string fileName);
     double getClsAvg();
     List getStdbelowClsAvg();
+    void outputToFileB(string fileName);
 };

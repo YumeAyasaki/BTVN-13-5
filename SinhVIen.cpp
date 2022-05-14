@@ -4,8 +4,9 @@ SinhVien::SinhVien() {
     
 };
 
-SinhVien::SinhVien(char* const hoTen, char* const ngaySinh, double* marks) {
+SinhVien::SinhVien(char* const hoTen, char* const maSo, char* const ngaySinh, double* marks) {
     strcpy(this->hoTen, hoTen);
+    strcpy(this->maSo, maSo);
     strcpy(this->ngaySinh, ngaySinh);
     for (int i = 0; i < 3; ++i) {
         this->marks[i] = marks[i];
@@ -13,7 +14,12 @@ SinhVien::SinhVien(char* const hoTen, char* const ngaySinh, double* marks) {
 };
 
 SinhVien::SinhVien(SinhVien const &sinhvien) {
-    *this = sinhvien;
+    strcpy(this->hoTen, sinhvien.hoTen);
+    strcpy(this->maSo, sinhvien.maSo);
+    strcpy(this->ngaySinh, sinhvien.ngaySinh);
+    for (int i = 0; i < 3; ++i) {
+        this->marks[i] = sinhvien.marks[i];
+    }
 };
 
 SinhVien::~SinhVien() {
@@ -23,7 +29,13 @@ SinhVien::~SinhVien() {
 };
 
 SinhVien SinhVien::operator=(SinhVien const &sinhvien) {
-    return SinhVien(sinhvien);
+    strcpy(this->hoTen, sinhvien.hoTen);
+    strcpy(this->maSo, sinhvien.maSo);
+    strcpy(this->ngaySinh, sinhvien.ngaySinh);
+    for (int i = 0; i < 3; ++i) {
+        this->marks[i] = sinhvien.marks[i];
+    }
+    return *this;
 };
 
 
@@ -33,6 +45,14 @@ char* SinhVien::getHoTen() {
 
 void SinhVien::setHoTen(char* hoTen) {
     this->hoTen = hoTen;
+}
+
+char* SinhVien::getMaSo() {
+    return maSo;
+}
+
+void SinhVien::setMaSo(char* maSo) {
+    this->maSo = maSo;
 }
 
 char* SinhVien::getNgaySinh() {
@@ -70,4 +90,23 @@ char* SinhVien::getHocLuc() {
         return (char*)"Yeu";
     }
     return (char*)"Kem";
+}
+
+void SinhVien::setInput() {
+    string st;
+    cout << "Nhap ho ten: ";
+    getline(cin, st);
+    strcpy(hoTen, st.c_str());
+    cout << "Nhap maSo: ";
+    getline(cin, st);
+    strcpy(maSo, st.c_str());
+    cout << "Nhap ngaySinh: ";
+    getline(cin, st);
+    strcpy(ngaySinh, st.c_str());
+    cout << "Nhap diem bai tap: ";
+    cin >> marks[0];
+    cout << "Nhap diem giua ki: ";
+    cin >> marks[1];
+    cout << "Nhap diem cuoi ki: ";
+    cin >> marks[2];
 }

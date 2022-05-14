@@ -9,18 +9,21 @@ using namespace std;
 
 class SinhVien {
     private:
-        char* hoTen = new char[50];
+        char* hoTen = new char[30];
+        char* maSo = new char[20];
         char* ngaySinh = new char[20];
         double* marks = new double[5];
 
     public:
         SinhVien(); // Tao
-        SinhVien(char* const hoTen, char* const ngaySinh, double marks[3]);
+        SinhVien(char* const hoTen, char* const maSo, char* const ngaySinh, double marks[3]);
         SinhVien(SinhVien const &sinhvien); // Sao chep
         ~SinhVien(); // Huy
 
         char* getHoTen();
         void setHoTen(char* hoTen);
+        char* getMaSo();
+        void setMaSo(char* maSo);
         char* getNgaySinh();
         void setNgaySinh(char* ngaySinh);
         double* getMarks();
@@ -30,4 +33,6 @@ class SinhVien {
         char* getHocLuc();
 
         SinhVien operator=(SinhVien const &sinhvien); // Gan bang
+
+        void setInput();       
 };

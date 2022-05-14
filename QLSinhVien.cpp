@@ -78,10 +78,10 @@ void QLSinhVien::input()
     cin >> size;
     for (int i = 0; i < size; i++)
     {
-        cin.ignore();
         cout << "Nhap sinh vien thu " << i + 1 << ":\n";
         SinhVien sv;
-        // Can ham input sinh vien
+        cin.ignore();
+        sv.setInput();
         insertTail(danhsach, sv);
     }
     cout << "\n";
@@ -116,4 +116,41 @@ List QLSinhVien::getStdbelowClsAvg()
         temp = temp->next;
     }
     return DuoiTB;
+}
+
+void QLSinhVien::outputToFileB(string fileName) {
+    int i = 0;
+    Node* temp = danhsach.head;
+
+    ofstream fo;
+    fo.open(fileName);
+    
+    while (temp != NULL) {
+        if (i == 0) { // header
+            fo << "STT" << setw(10);
+            fo << "Ho va ten" << setw(30);
+            fo << "MSSV" << setw(10);
+            fo << "Ngay sinh" << setw(20);
+            fo << "Bai tap" << setw(10);
+            fo << "Giua ki" << setw(10);
+            fo << "Cuoi ki" << setw(10);
+            fo << "Trung binh" << setw(10);
+            fo << "Xep loai" << setw(10);
+        }
+        else {
+            fo << i << setw(10);
+            fo << temp->detail.getHoTen() << setw(30);
+            fo << temp->detail.getMaSo() << setw(10);
+            fo << temp->detail.getNgaySinh() << setw(20);
+            fo << temp->detail.getMarks()[0] << setw(10);
+            fo << temp->detail.getMarks()[1] << setw(10);
+            fo << temp->detail.getMarks()[2] << setw(10);
+            fo << temp->detail.getStdAvg() << setw(10);
+            fo << temp->detail.getHocLuc() << setw(10);
+            temp = temp->next;
+        }
+        fo << '\n';
+        i++;
+    }
+    fo.close();
 }
