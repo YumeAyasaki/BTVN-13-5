@@ -4,6 +4,7 @@
 #include <cstring>
 #include <string.h>
 #include <stdlib.h> // Prevent segmentation fault
+#include <string>
 
 using namespace std;
 
