@@ -111,7 +111,7 @@ List QLSinhVien::getStdbelowClsAvg()
     {
         if (temp->detail.getStdAvg() < clsAve)
         {
-            insertTail(danhsach, temp->detail);
+            insertTail(DuoiTB, temp->detail);
         }
         temp = temp->next;
     }
