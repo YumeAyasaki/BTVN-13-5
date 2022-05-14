@@ -1,26 +1,88 @@
 #include "QLSinhVien.h"
 
+Node* createNode(SinhVien sv)
+{
+    Node* temp = new Node;
+    temp->detail = sv;
+    temp->next = nullptr;
+    return temp;
+}
+
+void initList(List& danhsach)
+{
+    danhsach.head = danhsach.tail = nullptr;
+}
+
+bool isEmpty(List& danhsach)
+{
+    return danhsach.head == nullptr;
+}
+
+void insertTail(List& danhsach, SinhVien sv)
+{
+    Node* temp = createNode(sv);
+    if (isEmpty(danhsach))
+    {
+        danhsach.head = danhsach.tail = temp;
+        return;
+    }
+    else
+    {
+        danhsach.tail->next = temp;
+        danhsach.tail = temp;
+    }
+}
+
+void insertHead(List& danhsach, SinhVien sv)
+{
+	Node* temp = createNode(sv);
+	if (isEmpty(danhsach))
+    {
+		danhsach.head = danhsach.tail = temp;
+		return;
+	}
+    else
+    {
+        temp->next = danhsach.head;
+	    danhsach.head = temp;
+    }
+}
+
+void deleteList(List& danhsach)
+{
+	Node* current = danhsach.head;
+	while (current)
+    {
+		Node* temp = current;
+		current = current->next;
+		delete temp;
+		temp = nullptr;
+	}
+	danhsach.head = danhsach.tail = nullptr;
+}
+
 QLSinhVien::QLSinhVien()
 {
-    this->size = 0;
-    this->Danhsach = nullptr;
+    initList(danhsach);
 }
 
 QLSinhVien::~QLSinhVien()
 {
-    this->size = 0;
-    delete[]this->Danhsach;
+    deleteList(danhsach);
 }
 
 void QLSinhVien::input()
 {
     cout << "Nhap so luong sinh vien: ";
-    cin >> this->size;
-    this->Danhsach = new SinhVien*[size];
-    for (int i = 0; i < this->size; i++)
+    int size;
+    cin >> size;
+    for (int i = 0; i < size; i++)
     {
-        this->Danhsach[i] = new SinhVien;
+        cin.ignore();
+        cout << "Nhap sinh vien thu " << i + 1 << ":\n";
+        SinhVien sv;
         // Can ham input sinh vien
+        insertTail(danhsach, sv);
     }
-    
+    cout << "\n";
 }
