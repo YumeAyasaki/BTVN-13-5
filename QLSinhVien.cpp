@@ -48,6 +48,13 @@ void insertHead(List& danhsach, SinhVien sv)
     }
 }
 
+void insertMid(Node* node, SinhVien sv)
+{
+	Node* q = createNode(sv);
+	q->next = node->next;
+	node->next = q;
+}
+
 void deleteList(List& danhsach)
 {
 	Node* current = danhsach.head;
@@ -116,6 +123,26 @@ List QLSinhVien::getStdbelowClsAvg()
         temp = temp->next;
     }
     return DuoiTB;
+}
+
+void QLSinhVien::addSVtoList(SinhVien& sv)
+{
+    if (atoi(danhsach.head->detail.getMaSo()) > atoi(sv.getMaSo())) {
+		insertHead(danhsach, sv);
+		return;
+	}
+    else if (atoi(danhsach.tail->detail.getMaSo()) < atoi(sv.getMaSo())) {
+		insertTail(danhsach, sv);
+		return;
+	}
+    
+    Node* temp = danhsach.head;
+	while (temp->next) {
+		if (atoi(temp->detail.getMaSo()) < atoi(sv.getMaSo()) && atoi(temp->next->detail.getMaSo()) > atoi(sv.getMaSo())) {
+			insertMid(temp, sv);
+		}
+		temp = temp->next;
+	}
 }
 
 void QLSinhVien::outputToFileB(string fileName) {

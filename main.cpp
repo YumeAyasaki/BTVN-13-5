@@ -13,5 +13,9 @@ int main() {
     QLSinhVien qlSinhVien;
     qlSinhVien.input();
     qlSinhVien.outputToFileB("output.txt");
+
+    // List duoiTB = qlSinhVien.getStdbelowClsAvg();
+    // qlSinhVien.outputToFileB("duoiTB.txt");
+
     return 0;
 }
