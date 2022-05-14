@@ -28,8 +28,14 @@ void insertTail(List& danhsach, SinhVien sv)
     }
     else
     {
-        danhsach.tail->next = temp;
-        danhsach.tail = temp;
+        if (danhsach.tail == nullptr) {
+            danhsach.tail = temp;
+        }
+        else {
+            danhsach.tail->next = temp;
+            danhsach.tail = temp;
+        }
+        
     }
 }
 
@@ -96,29 +102,31 @@ void QLSinhVien::input()
 
 void QLSinhVien::inputFromFile(string fileName) {
     Node* temp = new Node;
-    List l;
+    // List l;
+    // initList(l);
     ifstream fs("input.txt", ios_base::in);
     if (fs.is_open()){
-    string st;
-    while (!fs.eof())
-    {
-        getline(fs,st);
-        temp->detail.setHoTen((char*)st.c_str());
-        getline(fs,st);
-        temp->detail.setNgaySinh((char*)st.c_str());
-        getline(fs,st);
-        temp->detail.setMaSo((char*)st.c_str());
-        double* tmp = new double[3];
-        fs>>tmp[1];
-        fs>>tmp[2];
-        fs>>tmp[3];
-        temp->detail.setMarks(tmp);
-        getline(fs,st);
-        insertTail(l,temp->detail);
+        string* st;
+        while (!fs.eof())
+        {
+            st = new string;
+            getline(fs,*st);
+            temp->detail.setHoTen((char*)(*st).c_str());
+            st = new string;
+            getline(fs,*st);
+            temp->detail.setMaSo((char*)(*st).c_str());
+            st = new string;
+            getline(fs,*st);
+            temp->detail.setNgaySinh((char*)(*st).c_str());
+            double* tmp = new double[3];
+            fs>>tmp[0];
+            fs>>tmp[1];
+            fs>>tmp[2];
+            temp->detail.setMarks(tmp);
+            getline(fs,*st);
+            insertTail(danhsach,temp->detail);
+        }
     }
-    
-    }
-   
     fs.close();
 }
 
@@ -131,24 +139,24 @@ void QLSinhVien::outputToFile(string fileName) {
     
     while (temp != NULL) {
         if (i == 0) { // header
-            fo << "STT" << setw(10);
-            fo << "Ho va ten" << setw(30);
-            fo << "MSSV" << setw(10);
-            fo << "Ngay sinh" << setw(20);
-            fo << "Bai tap" << setw(10);
-            fo << "Giua ki" << setw(10);
-            fo << "Cuoi ki" << setw(10);
-            fo << "Trung binh" << setw(10);
+            fo << setw(10) << "STT";
+            fo << setw(30) << "Ho va ten";
+            fo << setw(10) << "MSSV" ;
+            fo << setw(20) << "Ngay sinh";
+            fo << setw(10) << "Bai tap";
+            fo << setw(10) << "Giua ki";
+            fo << setw(10) << "Cuoi ki";
+            fo << setw(10) << "TB";
         }
         else {
-            fo << i << setw(10);
-            fo << temp->detail.getHoTen() << setw(30);
-            fo << temp->detail.getMaSo() << setw(10);
-            fo << temp->detail.getNgaySinh() << setw(20);
-            fo << temp->detail.getMarks()[0] << setw(10);
-            fo << temp->detail.getMarks()[1] << setw(10);
-            fo << temp->detail.getMarks()[2] << setw(10);
-            fo << temp->detail.getStdAvg() << setw(10);
+            fo << setw(10) << i;
+            fo << setw(30) << temp->detail.getHoTen();
+            fo << setw(10) << temp->detail.getMaSo();
+            fo << setw(20) << temp->detail.getNgaySinh();
+            fo << setw(10) << temp->detail.getMarks()[0];
+            fo << setw(10) << temp->detail.getMarks()[1];
+            fo << setw(10) << temp->detail.getMarks()[2];
+            fo << setw(10) << temp->detail.getStdAvg();
             temp = temp->next;
         }
         fo << '\n';
@@ -218,26 +226,26 @@ void QLSinhVien::outputToFileB(string fileName) {
     
     while (temp != NULL) {
         if (i == 0) { // header
-            fo << "STT" << setw(10);
-            fo << "Ho va ten" << setw(30);
-            fo << "MSSV" << setw(10);
-            fo << "Ngay sinh" << setw(20);
-            fo << "Bai tap" << setw(10);
-            fo << "Giua ki" << setw(10);
-            fo << "Cuoi ki" << setw(10);
-            fo << "Trung binh" << setw(10);
-            fo << "Xep loai" << setw(10);
+            fo << setw(10) << "STT";
+            fo << setw(30) << "Ho va ten";
+            fo << setw(10) << "MSSV" ;
+            fo << setw(20) << "Ngay sinh";
+            fo << setw(10) << "Bai tap";
+            fo << setw(10) << "Giua ki";
+            fo << setw(10) << "Cuoi ki";
+            fo << setw(10) << "TB";
+            fo << setw(20) << "Xep loai";
         }
         else {
-            fo << i << setw(10);
-            fo << temp->detail.getHoTen() << setw(30);
-            fo << temp->detail.getMaSo() << setw(10);
-            fo << temp->detail.getNgaySinh() << setw(20);
-            fo << temp->detail.getMarks()[0] << setw(10);
-            fo << temp->detail.getMarks()[1] << setw(10);
-            fo << temp->detail.getMarks()[2] << setw(10);
-            fo << temp->detail.getStdAvg() << setw(10);
-            fo << temp->detail.getHocLuc() << setw(10);
+            fo << setw(10) << i;
+            fo << setw(30) << temp->detail.getHoTen();
+            fo << setw(10) << temp->detail.getMaSo();
+            fo << setw(20) << temp->detail.getNgaySinh();
+            fo << setw(10) << temp->detail.getMarks()[0];
+            fo << setw(10) << temp->detail.getMarks()[1];
+            fo << setw(10) << temp->detail.getMarks()[2];
+            fo << setw(10) << temp->detail.getStdAvg();
+            fo << setw(20) << temp->detail.getHocLuc();
             temp = temp->next;
         }
         fo << '\n';

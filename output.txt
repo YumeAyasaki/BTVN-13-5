@@ -1,0 +1,2 @@
+       STT                     Ho va ten      MSSV           Ngay sinh   Bai tap   Giua ki   Cuoi ki        TB            Xep loai
+         1                  Ayasaki Yume  20120360          19/11/2002         7         8         9      8.25                Gioi

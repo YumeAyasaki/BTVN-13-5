@@ -43,7 +43,7 @@ char* SinhVien::getHoTen() {
     return hoTen;
 }
 
-void SinhVien::setHoTen(char* hoTen) {
+void SinhVien::setHoTen(char* const hoTen) {
     this->hoTen = hoTen;
 }
 
@@ -51,7 +51,7 @@ char* SinhVien::getMaSo() {
     return maSo;
 }
 
-void SinhVien::setMaSo(char* maSo) {
+void SinhVien::setMaSo(char* const maSo) {
     this->maSo = maSo;
 }
 
@@ -59,7 +59,7 @@ char* SinhVien::getNgaySinh() {
     return ngaySinh;
 }
 
-void SinhVien::setNgaySinh(char* ngaySinh) {
+void SinhVien::setNgaySinh(char* const ngaySinh) {
     this->ngaySinh = ngaySinh;
 }
 

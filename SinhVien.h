@@ -22,11 +22,11 @@ class SinhVien {
         ~SinhVien(); // Huy
 
         char* getHoTen();
-        void setHoTen(char* hoTen);
+        void setHoTen(char* const hoTen);
         char* getMaSo();
-        void setMaSo(char* maSo);
+        void setMaSo(char* const maSo);
         char* getNgaySinh();
-        void setNgaySinh(char* ngaySinh);
+        void setNgaySinh(char* const ngaySinh);
         double* getMarks();
         void setMarks(double* marks);
 
