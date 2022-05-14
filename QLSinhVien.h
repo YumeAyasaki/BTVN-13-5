@@ -24,9 +24,11 @@ public:
     QLSinhVien();
     ~QLSinhVien();
     void input();
-    void inputFromFile(string fileName);
-    void outputToFile(string fileName);
+    // void inputFromFile(string fileName);
+    // void outputToFile(string fileName);
     double getClsAvg();
     List getStdbelowClsAvg();
+
+    void addSVtoList(SinhVien& sv);
     void outputToFileB(string fileName);
 };
