@@ -24,6 +24,7 @@ public:
     QLSinhVien();
     ~QLSinhVien();
     void input();
+    void output();
     void inputFromFile(string fileName);
     void outputToFile(string fileName);
     double getClsAvg();

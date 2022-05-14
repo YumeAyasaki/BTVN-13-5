@@ -87,6 +87,69 @@ void QLSinhVien::input()
     cout << "\n";
 }
 
+void QLSinhVien::inputFromFile(string fileName) {
+    Node* temp = new Node;
+    List l;
+    ifstream fs("input.txt", ios_base::in);
+    if (fs.is_open()){
+    string st;
+    while (!fs.eof())
+    {
+        getline(fs,st);
+        temp->detail.setHoTen((char*)st.c_str());
+        getline(fs,st);
+        temp->detail.setNgaySinh((char*)st.c_str());
+        getline(fs,st);
+        temp->detail.setMaSo((char*)st.c_str());
+        double* tmp = new double[3];
+        fs>>tmp[1];
+        fs>>tmp[2];
+        fs>>tmp[3];
+        temp->detail.setMarks(tmp);
+        getline(fs,st);
+        insertTail(l,temp->detail);
+    }
+    
+    }
+   
+    fs.close();
+}
+
+void QLSinhVien::outputToFile(string fileName) {
+    int i = 0;
+    Node* temp = danhsach.head;
+
+    ofstream fo;
+    fo.open(fileName);
+    
+    while (temp != NULL) {
+        if (i == 0) { // header
+            fo << "STT" << setw(10);
+            fo << "Ho va ten" << setw(30);
+            fo << "MSSV" << setw(10);
+            fo << "Ngay sinh" << setw(20);
+            fo << "Bai tap" << setw(10);
+            fo << "Giua ki" << setw(10);
+            fo << "Cuoi ki" << setw(10);
+            fo << "Trung binh" << setw(10);
+        }
+        else {
+            fo << i << setw(10);
+            fo << temp->detail.getHoTen() << setw(30);
+            fo << temp->detail.getMaSo() << setw(10);
+            fo << temp->detail.getNgaySinh() << setw(20);
+            fo << temp->detail.getMarks()[0] << setw(10);
+            fo << temp->detail.getMarks()[1] << setw(10);
+            fo << temp->detail.getMarks()[2] << setw(10);
+            fo << temp->detail.getStdAvg() << setw(10);
+            temp = temp->next;
+        }
+        fo << '\n';
+        i++;
+    }
+    fo.close();
+}
+
 double QLSinhVien::getClsAvg()
 {
     double sum = 0;
@@ -100,6 +163,7 @@ double QLSinhVien::getClsAvg()
     }
     return sum/count;
 }
+
 
 List QLSinhVien::getStdbelowClsAvg()
 {

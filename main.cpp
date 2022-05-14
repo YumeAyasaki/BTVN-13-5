@@ -11,7 +11,7 @@ int main() {
     // cout << temp.getHocLuc();
 
     QLSinhVien qlSinhVien;
-    qlSinhVien.input();
+    qlSinhVien.inputFromFile("input.txt");
     qlSinhVien.outputToFileB("output.txt");
     return 0;
 }
